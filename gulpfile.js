@@ -6,7 +6,6 @@ var gulp = require('gulp'),
     http = require('http'),
     path = require('path'),
     clean = require('gulp-clean'),
-    notify = require('gulp-notify'),
     server = lr();
 
 gulp.task('default', ['clean'], function() {
