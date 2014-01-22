@@ -1,10 +1,11 @@
 {
-  "devDependencies": {
-    "gulp": "~3.4.0",
-    "gulp-ruby-sass": "~0.2.0",
-    "gulp-livereload": "~0.2.0",
-    "tiny-lr": "0.0.5",
-    "gulp-notify": "~0.3.4-1",
-    "gulp-clean": "~0.2.4"
-  }
+    "devDependencies": {
+        "gulp": "~3.4.0",
+        "gulp-ruby-sass": "~0.2.0",
+        "gulp-livereload": "~0.2.0",
+        "tiny-lr": "0.0.5",
+        "gulp-notify": "~0.3.4-1",
+        "gulp-clean": "~0.2.4",
+        "connect": "~2.12.0"
+    }
 }
