@@ -1,5 +1,6 @@
 var gulp = require('gulp'),
-    sass = require('gulp-ruby-sass'),
+    sass = require('gulp-sass'),
+    bourbon = require('node-bourbon').includePaths,
     livereload = require('gulp-livereload'),
     lr = require('tiny-lr'),
     connect = require('connect'),
@@ -24,7 +25,9 @@ gulp.task('webserver', function() {
 gulp.task('styles', function() {
     return gulp.src('src/styles/main.scss')
         .pipe(sass({
-            style: 'expanded'
+            errLogToConsole: true,
+            style: 'expanded',
+            includePaths: bourbon //'node_modules/node-bourbon/assets/stylesheets'
         }))
         .pipe(gulp.dest('dist/assets/css'))
         .pipe(livereload(server));
@@ -42,9 +45,10 @@ gulp.task('watch', function() {
         if (err) {
             return console.log(err)
         };
-        gulp.watch('src/styles/**/*.scss', function(event) {
-            console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
-            gulp.run('styles');
-        });
     });
+    gulp.watch('src/styles/**/*.scss', function(event) {
+        console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
+        gulp.run('styles');
+    });
+
 });
