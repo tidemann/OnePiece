@@ -1,0 +1,7 @@
+@import "bourbon";
+html, body{
+	height: 100%;
+}
+body{
+	@include linear-gradient(to top, red, orange);
+}
