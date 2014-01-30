@@ -1,14 +1,14 @@
 {
-  "devDependencies": {
-    "gulp": "~3.4.0",
-    "gulp-ruby-sass": "~0.2.0",
-    "gulp-livereload": "~0.2.0",
-    "tiny-lr": "0.0.5",
-    "gulp-notify": "~0.3.4-1",
-    "gulp-clean": "~0.2.4",
-    "connect": "~2.12.0",
+    "devDependencies": {
+        "gulp": "~3.5.0",
+        "gulp-ruby-sass": "~0.2.0",
+        "gulp-livereload": "~0.2.0",
+        "tiny-lr": "0.0.5",
+        "gulp-clean": "~0.2.4",
+        "connect": "~2.12.0",
     "node-neat": "~1.1.0",
     "node-bourbon": "~1.0.0",
-    "gulp-sass": "~0.5.2"
-  }
+        "gulp-sass": "~0.5.2",
+        "gulp-ect": "~1.0.0"
+    }
 }

@@ -7,34 +7,45 @@ var gulp = require('gulp'),
     http = require('http'),
     path = require('path'),
     clean = require('gulp-clean'),
+    ect = require('gulp-ect'),
     server = lr();
 
 gulp.task('default', ['clean'], function() {
-    gulp.run('styles', 'webserver', 'watch');
+    gulp.run('styles', 'markup', 'webserver', 'watch');
 });
 
+gulp.task('markup', function() {
+    return gulp.src('./src/*.ect')
+        .pipe(ect())
+        .pipe(gulp.dest('./dist'))
+        .pipe(livereload(server));
+});
+gulp.task('refresh', function(tata) {
+    console.log("awesome?");
+    return
+});
 gulp.task('webserver', function() {
     var port = 3000,
         hostname = null,
-        base = path.resolve('.'),
-        directory = path.resolve('.'),
+        base = path.resolve('./dist'),
+        directory = path.resolve('./dist'),
         app = connect().use(connect["static"](base)).use(connect.directory(directory));
     return http.createServer(app).listen(port, hostname);
 });
 
 gulp.task('styles', function() {
-    return gulp.src('src/styles/main.scss')
+    return gulp.src('src/assets/styles/main.scss')
         .pipe(sass({
             errLogToConsole: true,
             style: 'expanded',
             includePaths: bourbon //'node_modules/node-bourbon/assets/stylesheets'
         }))
-        .pipe(gulp.dest('dist/assets/css'))
+        .pipe(gulp.dest('dist/assets/styles'))
         .pipe(livereload(server));
 });
 
 gulp.task('clean', function() {
-    return gulp.src(['dist/assets/css'], {
+    return gulp.src(['dist/assets/styles', 'dist', ], {
         read: false
     })
         .pipe(clean());
@@ -46,9 +57,6 @@ gulp.task('watch', function() {
             return console.log(err)
         };
     });
-    gulp.watch('src/styles/**/*.scss', function(event) {
-        console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
-        gulp.run('styles');
-    });
-
+    gulp.watch('src/assets/styles/**/*.scss', ['styles']);
+    gulp.watch('src/**/*.ect', ['markup']);
 });
