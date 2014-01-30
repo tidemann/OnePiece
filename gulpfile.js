@@ -10,19 +10,13 @@ var gulp = require('gulp'),
     ect = require('gulp-ect'),
     server = lr();
 
-gulp.task('default', ['clean'], function() {
-    gulp.run('styles', 'markup', 'webserver', 'watch');
-});
+gulp.task('default', ['clean', 'styles', 'markup', 'webserver', 'watch']);
 
 gulp.task('markup', function() {
     return gulp.src('./src/*.ect')
         .pipe(ect())
         .pipe(gulp.dest('./dist'))
         .pipe(livereload(server));
-});
-gulp.task('refresh', function(tata) {
-    console.log("awesome?");
-    return
 });
 gulp.task('webserver', function() {
     var port = 3000,
